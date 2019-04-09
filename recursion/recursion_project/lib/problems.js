@@ -195,7 +195,7 @@ function pathFinder(directories, targetFile) {
 		if (key === targetFile) return '/' + targetFile;
 
 		let subdir = directories[key];
-		let subPath = pathFinder(subdir, targetFile)
+		let subPath = pathFinder(subdir, targetFile);
 
 		// if target is found in the subdir
 		if (subPath !== null) {
