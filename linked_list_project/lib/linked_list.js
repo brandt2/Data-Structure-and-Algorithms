@@ -104,27 +104,84 @@ class LinkedList {
 
     // TODO: Implement the contains method here
     contains(target) {
-
+			let current = this.head;
+			while (current !== null) {
+				if (current.value === target) {
+					return true;
+				}
+				current = current.next;
+			}
+			return false;
     }
 
     // TODO: Implement the get method here
     get(index) {
-
+			let i = 0;
+			for (let current = this.head; current !== null; current = current.next) {
+				if (i === index) {
+					return current;
+				}
+				i++;
+			}
+			return null;
     }
 
     // TODO: Implement the set method here
     set(index, val) {
-
+			let i = 0;
+			for (let current = this.head; current !== null; current = current.next) {
+				if (i === index) {
+					current.value = val;
+					return true;
+				}
+				i++;
+			}
+			return false;
     }
 
     // TODO: Implement the insert method here
     insert(index, val) {
-
+			let i = 0;
+			if (this.length - 1 < index) {
+				return false;
+			}
+			if (index === 0) {
+				this.addToHead(val);
+				return true;
+			}
+			for (let current = this.head; current !== null; current = current.next) {
+				if (i === index - 1) {
+					let temp = current.next;
+					let newNode = new Node(val);
+					current.next = newNode;
+					newNode.next = temp;
+					this.length++;
+					return true;
+				}
+				i++;
+			}
+			return false;
     }
 
     // TODO: Implement the remove method here
     remove(index) {
-
+			let i = 0;
+			if (this.length - 1 < index) {
+				return undefined;
+			}
+			if (index === 0) {
+				return this.removeHead();
+			}
+			for (let current = this.head; current !== null; current = current.next) {
+				if (i === index - 1){
+					let temp = current.next;
+					current.next = current.next.next;
+					this.length--;
+					return temp;
+				}
+				i++;
+			}
+			return undefined;
     }
 
     // TODO: Implement the size method here
