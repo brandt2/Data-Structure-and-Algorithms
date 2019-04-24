@@ -39,22 +39,67 @@ class LinkedList {
 
     // TODO: Implement the addToTail method here
     addToTail(val) {
-
+			let newNode = new Node(val);
+			if (this.length === 0) {
+				this.head = newNode;
+			} else {
+				this.tail.next = newNode;
+			}
+			this.tail = newNode;
+			this.length++;
+			return this;
     }
 
     // TODO: Implement the removeTail method here
     removeTail() {
-
+			let removedNode = this.tail;
+			if (this.length === 0) {
+					return undefined;
+			} else if (this.length === 1) {
+					this.head = null;
+					this.tail = null;
+					this.length = 0;
+			} else {
+					let current = this.head;
+					while (current.next !== this.tail) {
+							current = current.next;
+					}
+					current.next = null;
+					this.tail = current;
+					this.length--;
+			}
+			return removedNode;
     }
 
     // TODO: Implement the addToHead method here
     addToHead(val) {
-
+			let newNode = new Node(val);
+			let temp = this.head;
+			if (this.length === 0) {
+				this.head = newNode;
+				this.tail = newNode;
+			} else if (this.length >= 1) {
+				this.head = newNode;
+				this.head.next = temp;
+			}
+			this.length++;
+			return this;
     }
 
     // TODO: Implement the removeHead method here
     removeHead() {
-
+			let removedNode = this.head;
+			if (this.length === 0) {
+				return undefined;
+			} else if (this.length === 1) {
+				this.head = null;
+				this.tail = null;
+				this.length = 0;
+			} else {
+				this.head = removedNode.next;
+				this.length--;
+			}
+			return removedNode;
     }
 
     // TODO: Implement the contains method here
@@ -84,7 +129,7 @@ class LinkedList {
 
     // TODO: Implement the size method here
     size() {
-
+			return this.length;
     }
 }
 
