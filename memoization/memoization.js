@@ -17,8 +17,18 @@ function factorial(n) {
   return ans;
 }
 
+// function factorial(n) {
+//   if (n in memo) return memo[n];
+
+//   if (n === 1) return 1;
+
+//   let ans = n * factorial(n - 1);
+//   memo[n] = ans;
+//   return ans;
+// }
+
 console.log(factorial(6)); // 6 steps
-console.log(memo);
+console.log(memo); // { '2': 2, '3': 6, '4': 24, '5': 120, '6': 720 }
 console.log(factorial(5)); // 1 step (constant time)
 
 // -----------------------------------------------------------------------------
